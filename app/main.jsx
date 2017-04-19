@@ -13,6 +13,7 @@ import Planets from './components/Planets'
 import Products from './components/Products'
 import Product from './components/Product'
 import NotFound from './components/NotFound'
+import Checkout from './components/Checkout'
 
 // dispatchers
 import {getPlanets} from './reducers/planets'
@@ -46,6 +47,15 @@ const onProductEnter = ({params: {productId}}) => {
     .catch()
 }
 
+const onCheckoutEnter = ({}) => {
+  // axios.get(`/api/products/${productId}`)
+  // .then(function(res) {
+  //   return res.data
+  // })
+  //   .then((reviews) => store.dispatch(getReviews(reviews)))
+  //   .catch()
+}
+
 render(
   <Provider store={store}>
     <Router history={browserHistory}>
@@ -54,6 +64,7 @@ render(
         <Route path="/planets" component={Planets} />
         <Route path="/planets/:categoryId" component={Products} onEnter={onPlanetEnter}/>
         <Route path="/products/:productId" component={Product} onEnter={onProductEnter}/>
+        <Route path="/checkout" component={Checkout} />
       </Route>
       <Route path='*' component={NotFound} />
     </Router>
