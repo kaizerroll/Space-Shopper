@@ -9,13 +9,35 @@ export default class Checkout extends React.Component {
 
     // const handleSubmit = props.handleSubmit
     // // need to set this up^
-    constructor(props) {
-        super(props);
-
+  constructor(props) {
+    super(props)
+    this.state = {
+        // add states
+        name: '',
+        streetAddress:''
     }
+    this.handleCCN = this.handleCCN.bind(this)
+    // this.handleType = this.handleType.bind(this)
+    // this.handleSubmit = this.handleSubmit.bind(this)
+  }
 
-    render() {
-        return (
+  handleCCN(e) {
+    this.setState({ccn: e.target.value})
+  }
+
+  handleChange(e) {
+    this.setState({ccn: e.target.value})
+  }
+
+	handleSubmit(e) {
+		e ? e.preventDefault() : null;
+		this.props.whenSubmitted(this.state)
+
+	}
+
+
+  render() {
+    return (
             <div>
 
                 <h2>Order Details</h2>
@@ -41,6 +63,7 @@ export default class Checkout extends React.Component {
                                 <input
                                     className="form-control"
                                     type="text"
+                                    name="StreetAddress"
                                 />
                             </div>
                         </div>
@@ -89,6 +112,7 @@ export default class Checkout extends React.Component {
                             <label className="col-xs-2 control-label">Credit Card Number</label>
                             <div className="col-xs-10">
                                 <input
+                                    onChange={this.handleCCN}
                                     className="form-control"
                                     type="text"
                                 />
@@ -139,7 +163,7 @@ export default class Checkout extends React.Component {
 }
 
 // TODOS HERE:
-// - for input fields: 
+// - for input fields:
 //         - {/*onChange={handleChange}*/ }
 //         - {/*value={inputValue}*/ }
 //         - {/*placeholder={}*/ }
