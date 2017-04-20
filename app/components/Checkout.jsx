@@ -9,35 +9,41 @@ export default class Checkout extends React.Component {
 
     // const handleSubmit = props.handleSubmit
     // // need to set this up^
-  constructor(props) {
-    super(props)
-    this.state = {
-        // add states
-        name: '',
-        streetAddress:''
+    constructor(props) {
+        super(props)
+        this.state = {
+            // add states
+            name: '',
+            streetAddress: '',
+            city: '',
+            state: '',
+            zip: '',
+            ccnType: '',
+            ccnNum: '',
+            expMonth: '',
+            expYear: '',
+            cvv: ''
+
+        }
+        this.handleChange = this.handleChange.bind(this)
+        // this.handleSubmit = this.handleSubmit.bind(this)
     }
-    this.handleCCN = this.handleCCN.bind(this)
-    // this.handleType = this.handleType.bind(this)
-    // this.handleSubmit = this.handleSubmit.bind(this)
-  }
-
-  handleCCN(e) {
-    this.setState({ccn: e.target.value})
-  }
-
-  handleChange(e) {
-    this.setState({ccn: e.target.value})
-  }
-
-	handleSubmit(e) {
-		e ? e.preventDefault() : null;
-		this.props.whenSubmitted(this.state)
-
-	}
 
 
-  render() {
-    return (
+
+    handleChange(e) {
+        this.setState({ [e.target.name]: e.target.value })
+    }
+
+    handleSubmit(e) {
+        e ? e.preventDefault() : null;
+        this.props.whenSubmitted(this.state)
+
+    }
+
+
+    render() {
+        return (
             <div>
 
                 <h2>Order Details</h2>
@@ -54,6 +60,8 @@ export default class Checkout extends React.Component {
                                 <input
                                     className="form-control"
                                     type="text"
+                                    name="name"
+                                    onChange={this.handleChange}
                                 />
                             </div>
                         </div>
@@ -63,7 +71,8 @@ export default class Checkout extends React.Component {
                                 <input
                                     className="form-control"
                                     type="text"
-                                    name="StreetAddress"
+                                    name="streetAddress"
+                                    onChange={this.handleChange}
                                 />
                             </div>
                         </div>
@@ -73,6 +82,8 @@ export default class Checkout extends React.Component {
                                 <input
                                     className="form-control"
                                     type="text"
+                                    name="city"
+                                    onChange={this.handleChange}
                                 />
                             </div>
                         </div>
@@ -82,6 +93,8 @@ export default class Checkout extends React.Component {
                                 <input
                                     className="form-control"
                                     type="text"
+                                    name="state"
+                                    onChange={this.handleChange}
                                 />
                             </div>
                         </div>
@@ -91,6 +104,8 @@ export default class Checkout extends React.Component {
                                 <input
                                     className="form-control"
                                     type="text"
+                                    name="zip"
+                                    onChange={this.handleChange}
                                 />
                             </div>
                         </div>
@@ -99,7 +114,8 @@ export default class Checkout extends React.Component {
                             <div className="col-xs-10">
                                 <select
                                     type="text"
-                                    name="type"
+                                    name="ccnType"
+                                    onChange={this.handleChange}
                                 >
                                     <option></option>
                                     <option>MasterCard</option>
@@ -115,6 +131,8 @@ export default class Checkout extends React.Component {
                                     onChange={this.handleCCN}
                                     className="form-control"
                                     type="text"
+                                    name="ccnNum"
+                                    onChange={this.handleChange}
                                 />
                             </div>
                         </div>
@@ -124,6 +142,8 @@ export default class Checkout extends React.Component {
                                 <input
                                     className="form-control"
                                     type="text"
+                                    name="expMonth"
+                                    onChange={this.handleChange}
                                 />
                             </div>
                         </div>
@@ -133,6 +153,8 @@ export default class Checkout extends React.Component {
                                 <input
                                     className="form-control"
                                     type="text"
+                                    name="expYear"
+                                    onChange={this.handleChange}
                                 />
                             </div>
                         </div>
@@ -142,6 +164,8 @@ export default class Checkout extends React.Component {
                                 <input
                                     className="form-control"
                                     type="text"
+                                    name="cvv"
+                                    onChange={this.handleChange}
                                 />
                             </div>
                         </div>
